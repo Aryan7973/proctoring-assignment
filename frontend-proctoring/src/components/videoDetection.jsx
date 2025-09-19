@@ -225,7 +225,7 @@ const videoDetection = () => {
 
     const startRecording = async () => {  
 
-        const res = await fetch('http://localhost:5000/interviews',{
+        const res = await fetch('https://proctoring-assignment.onrender.com/interviews',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({candidateName: 'Test Candidate'})
@@ -260,13 +260,13 @@ const videoDetection = () => {
             stopFaceDetection(); // stop face detection when recording stops
             if(interviewId){
 
-                await fetch(`http://localhost:5000/interviews/${interviewId}/logs/batch`, {
+                await fetch(`https://proctoring-assignment.onrender.com/interviews/${interviewId}/logs/batch`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ logs: [...logs].reverse() }), // send entire logs array
                 });
 
-                await fetch(`http://localhost:5000/interviews/${interviewId}/end`,{
+                await fetch(`https://proctoring-assignment.onrender.com/interviews/${interviewId}/end`,{
                     method: 'PATCH',
                 });
             }
